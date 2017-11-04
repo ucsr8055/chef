@@ -27,5 +27,5 @@ end
 execute 'Command-Test' do
   command 'echo blah >> /etc/motd'
   action :run
-  only_if { File.exists?('/etc/motd') }
+  only_if { ::File.exists?('/etc/motd') }
 end
