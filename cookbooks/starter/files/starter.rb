@@ -15,3 +15,17 @@ file '/var/www/html/index.html' do
   owner 'root'
   mode '0755'
 end
+
+file '/etc/motd' do
+  content 'welcome to my server: chandra '
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+execute 'Command-Test' do
+  command 'echo blah >> /etc/motd'
+  action :run
+  only_if 'test -r /etc/motd'
+end
